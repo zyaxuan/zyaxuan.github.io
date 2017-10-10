@@ -230,7 +230,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/06/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/09/06/hello-world/">github + hexo 个人博客搭建</a>
     </h1>
   
 
@@ -243,15 +243,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>原来搭博客可以这么简单,有基础的半天可以搞定喽(我是菜鸟,第一次居然用了好久才算彻底成功,主要是域名绑定上面耗费时间了)</p>
+<h3 id="一-安装使用的基本工具"><a href="#一-安装使用的基本工具" class="headerlink" title="一.安装使用的基本工具"></a>一.安装使用的基本工具</h3><ul>
+<li><p>1.Git安装</p>
+<p>  (1) 直接通过程序安装<br>下载[Git installer] (<a href="http://git-scm.com/downloads" target="_blank" rel="external">http://git-scm.com/downloads</a>)</p>
+<p>  (2) 通过shell 安装 </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div><div class="line"></div><div class="line">// 安装Git</div><div class="line">$ brew install git</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>(3) 使用git –version或者which git命令查看安装版本，有就是安装成功了</p>
+<pre><code>(4) 配置Git  创建一个全局用户名、全局邮箱
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;zyaxuan&quot;</div><div class="line">git config --global user.email &quot;zyaxuan@example.com&quot;</div></pre></td></tr></table></figure>
+
+(5) 
+cd ~进入根目录
+</code></pre><p>输入命令ssh-keygen生成ssh-key，如果有提示，一直按回车</p>
+<pre><code>(6) 将SSH key添加到GitHub。登录到GitHub页面，Account Settings-&gt;SSH Public Keys-&gt;Add another key
+</code></pre><p>将生成的key(id_rsa.pub文件）内容copy到输入框中，save</p>
+<ul>
+<li><p>2 安装Nodejs</p>
+<p>  先安装nvm，这是Nodejs版本管理器，可以轻松切换Nodejs版本。 这里有两种方式安装。如果使用curl的方式安装，安装完成之后一定要重启终端。</p>
+<p>1.Homebrew 安装方式，此安装方式无需重启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ brew install nvm</div><div class="line">$ mkdir ~/.nvm</div><div class="line">$ export NVM_DIR=~/.nvm</div><div class="line">$(brew --prefix nvm)/nvm.sh</div></pre></td></tr></table></figure>
+<p>2.curl安装方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> $ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</div><div class="line">安装完成后，重启终端 并执行下列命令即可安装 Node.js。</div><div class="line"></div><div class="line"> $ nvm install 4</div></pre></td></tr></table></figure>
+</li>
+<li><p>3 安装Hexo</p>
+</li>
+</ul>
+<p>以上所有都安装完成之后再安装Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install hexo-cli -g</div></pre></td></tr></table></figure></p>
 
       
 
